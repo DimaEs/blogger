@@ -4,9 +4,12 @@
 <li>
 <%= link_to tag.name, tag_path(tag),  class: 'name', id: "tag_#{tag.id}" %>
 <%=  "(#{tag.articles.size})" %>
+<% if logged_in? %>
 <%= link_to "delete", tag_path(tag), method: :delete, data: {confirm: "Really delete the tag '#{tag.name}'?"}%>
+<% end %>
 </li>
 <% end %>
 </ul>
-
+<% if logged_in? %>
 <%= link_to "Create a New Article", new_article_path, class: "new_article" %>
+<%end%>
